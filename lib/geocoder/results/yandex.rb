@@ -9,9 +9,7 @@ module Geocoder::Result
 
     def bounds
       envelope = @data['GeoObject']['boundedBy']['Envelope']
-      envelope['lowerCorner'] = envelope['lowerCorner'].split(' ').reverse
-      envelope['upperCorner'] = envelope['upperCorner'].split(' ').reverse
-      envelope
+      { 'lowerCorner' => envelope['lowerCorner'].split(' ').reverse, 'upperCorner' => envelope['upperCorner'].split(' ').reverse }
     end
 
     def address(format = :full)
